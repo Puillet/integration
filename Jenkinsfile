@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {​​​​​​​
             steps {​​​​​​​
                 //withMaven(mavenSettingsConfig: 'maven-config', globalMavenSettingsConfig: 'global-config') {​​​​​​​
-                    sh "mvn  -s C:/Users/pierr/.m2/settings.xml deploy"
+                    bat "mvn  -s C:/Users/pierr/.m2/settings.xml deploy"
                 //}​​​​​​​
             }​​​​​​​
         }​​​​​​​
@@ -41,12 +41,12 @@ pipeline {
                 }​​​​​​​
                 withCredentials([usernamePassword(credentialsId: 'mjidsaa', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]){​​​​​​​
                     //withMaven(mavenSettingsConfig: 'maven-config', globalMavenSettingsConfig: 'global-config') {​​​​​​​
-                        sh 'git config --global user.email "you@example.com"'
-                        sh 'git config --global user.name "Test"'
-                        sh 'git branch release/'+pom.version.replace("-SNAPSHOT","")
-                        sh 'git push origin release/'+pom.version.replace("-SNAPSHOT","")
-                        sh 'mvn release:prepare -s C:/Users/pierr/.m2/settings.xml -B -Dusername=$USERNAME_VAR -Dpassword=$PASSWORD_VAR'
-                        sh 'mvn release:perform -s C:/Users/pierr/.m2/settings.xml -B -Dusername=$USERNAME_VAR -Dpassword=$PASSWORD_VAR'
+                        bat 'git config --global user.email "you@example.com"'
+                        bat 'git config --global user.name "Test"'
+                        bat 'git branch release/'+pom.version.replace("-SNAPSHOT","")
+                        bat 'git push origin release/'+pom.version.replace("-SNAPSHOT","")
+                        bat 'mvn release:prepare -s C:/Users/pierr/.m2/settings.xml -B -Dusername=$USERNAME_VAR -Dpassword=$PASSWORD_VAR'
+                        bat 'mvn release:perform -s C:/Users/pierr/.m2/settings.xml -B -Dusername=$USERNAME_VAR -Dpassword=$PASSWORD_VAR'
                     //}​​​​​​​
                 }​​​​​​​
             }​​​​​​​
@@ -54,7 +54,7 @@ pipeline {
         stage('Sonar') {​​​​​​​
             steps {​​​​​​​
                 withCredentials([usernamePassword(credentialsId: 'mjidsaa', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]) {​​​​​​​
-                    sh "mvn  -s C:/Users/pierr/.m2/settings.xml sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123"
+                    bat "mvn  -s C:/Users/pierr/.m2/settings.xml sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123"
                 }​​​​​​​
             }
         }
