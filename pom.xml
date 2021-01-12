@@ -32,10 +32,10 @@
             <id>myapp-snapshot</id>
             <url>http://localhost:8081/nexus/content/repositories/myapp-snapshot</url>
         </snapshotRepository>
-        <Repository>
+        <repository>
             <id>myapp-release</id>
             <url>http://localhost:8081/nexus/content/repositories/myapp-release</url>
-        </Repository>
+        </repository>
     </distributionManagement>
 
     <repositories>
