@@ -54,7 +54,7 @@ pipeline {
         stage('Sonar') {​​​​​​​
             steps {​​​​​​​
                 withCredentials([usernamePassword(credentialsId: 'mjidsaa', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME_VAR')]) {​​​​​​​
-                    sh "mvn  -s C:/Users/Majid/.m2/settings.xml sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123"
+                    sh "mvn  -s C:/Users/pierr/.m2/settings.xml sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123"
                 }​​​​​​​
             }
         }
